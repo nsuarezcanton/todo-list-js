@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<title>To-Do List</title>
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<div id="todo_list_container">
+			<div id="task_input_container">
+				<h2>To-Do List</h2>
+				<input type="text" id="task_input_field" placeholder="To-do">
+				<button onclick="newElement()" class="add_task_button">ADD</button>
+			</div>
+			<div id="task_list_container">
+				<ul id="task_list">
+					<li>Hit the gym!</li>
+					<li class="checked">Pay bills.</li>
+					<li>Meet George.</li>
+					<li>Buy eggs.</li>
+					<li>Call mom.</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/todo_list.js"></script>
+	</body>
+</html>
