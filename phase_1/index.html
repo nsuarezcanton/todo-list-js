@@ -7,11 +7,11 @@
 	</head>
 	<body>
 		<div id="todo_list_container">
-			<div id="task_input_container">
-				<h2>To-Do List</h2>
+			<h2>To-Do List</h2>
+			<form id="task_input_container">
 				<input type="text" id="task_input_field" placeholder="To-do">
-				<button onclick="newElement()" class="add_task_button">ADD</button>
-			</div>
+				<button onclick="newElement()" type="button" id="add_task_button">ADD</button>
+			</form>
 			<div id="task_list_container">
 				<ul id="task_list">
 					<li>Hit the gym!</li>

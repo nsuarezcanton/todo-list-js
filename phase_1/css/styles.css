@@ -9,13 +9,51 @@
 #todo_list_container {
 	margin-right: auto;
 	margin-left: auto;
-	width: 800px;
+	width: 50%;
+}
+
+#task_input_container {
+	display: table;
+	width: 100%;
+	text-align: center;
+	margin: 1em 0;
+}
+
+#task_input_field {
+	display: table-cell;
+	width: 80%;
+	margin-right: 5%;
+	line-height: 2em;
+	font-size: 18px;
+	padding-left: 12px;
+	border-color: #000000;
+	border-width: 1px;
+}
+
+#add_task_button {
+	display: table-cell;
+	width: 15%;
+	margin-left: 0;
+	margin-right: auto;
+	line-height: 2em;
+	font-size: 18px;
+	background-color: #23b574;
+	border-radius: 5px;
+	border: none;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+#add_task_button:hover {
+	background-color: #2bdb8d;
 }
 
 /* Remove margins and padding from the list */
 ul {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	border: 1px solid black;
 }
 
 /* Style the list items */
@@ -23,7 +61,7 @@ ul li {
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
-    background: #eee;
+    /*background: #eee;*/
     font-size: 18px;
     transition: 0.2s;
 
@@ -32,11 +70,6 @@ ul li {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-
-/* Set all odd list items to a different color (zebra-stripes) */
-ul li:nth-child(odd) {
-    background: #f9f9f9;
 }
 
 /* Darker background-color on hover */
