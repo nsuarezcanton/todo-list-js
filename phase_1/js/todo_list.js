@@ -10,7 +10,22 @@ function newElement() {
 	} else {
 		document.getElementById("task_list").appendChild(li);
 	}
+
 	document.getElementById("task_input_field").value = "";
+
+	var editSpan = newEditButton()
+	li.appendChild(editSpan);
+
+	editSpan.onclick = function(e) {
+		li.contentEditable = true;
+	};
+
+	li.addEventListener("keydown", function(e) {
+		if(e.key == "Enter"){
+			event.preventDefault();
+			li.contentEditable = false;
+		}
+	});
 
 	var removeSpan = newRemoveButton()
 	li.appendChild(removeSpan);
@@ -30,7 +45,7 @@ function newElement() {
 
 // Returns a new "remove" button.
 function newRemoveButton() {
-	var removeSpan = document.createElement("SPAN");
+	var removeSpan = document.createElement("DIV");
 	var removeTxt = document.createTextNode("\u00D7");
 	removeSpan.className = "remove_button";
 	removeSpan.appendChild(removeTxt);
@@ -42,4 +57,13 @@ function newCheckbox() {
 	var checkbox = document.createElement("INPUT")
 	checkbox.setAttribute("type", "checkbox")
 	return checkbox;
+}
+
+// Returns a new "Edit" button.
+function newEditButton() {
+	var editSpan = document.createElement("DIV");
+	var editText = document.createTextNode("\u270E");
+	editSpan.className = "edit_button";
+	editSpan.appendChild(editText);
+	return editSpan;
 }
