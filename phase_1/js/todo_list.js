@@ -1,9 +1,19 @@
+function setUpInputField() {
+	var inputField = document.getElementById("task_input_field");
+	inputField.addEventListener("keydown", function(e) {
+		if(e.key == "Enter"){
+			e.preventDefault();
+			document.getElementById("add_task_button").click();
+		}
+	});
+}
+
+setUpInputField();
+
 // Create a new list item when clicking on the "ADD" button
 function newElement() {
 	var li = document.createElement("LI");
 	var inputValue = document.getElementById("task_input_field").value;
-	var t = document.createTextNode(inputValue);
-	li.appendChild(t);
 
 	if (inputValue === "") {
 		alert("New task cannot be empty.");
@@ -13,17 +23,20 @@ function newElement() {
 
 	document.getElementById("task_input_field").value = "";
 
+	var taskLabel = newTaskLabel(inputValue);
+	li.appendChild(taskLabel);
+
 	var editSpan = newEditButton()
 	li.appendChild(editSpan);
 
 	editSpan.onclick = function(e) {
-		li.contentEditable = true;
+		taskLabel.contentEditable = true;
 	};
 
 	li.addEventListener("keydown", function(e) {
 		if(e.key == "Enter"){
 			event.preventDefault();
-			li.contentEditable = false;
+			taskLabel.contentEditable = false;
 		}
 	});
 
@@ -41,6 +54,15 @@ function newElement() {
 	doneInput.addEventListener("change", function(e) {
 		this.parentElement.classList.toggle("checked");
 	});
+}
+
+// Returns a new task label.
+function newTaskLabel(taskText) {
+	var taskLabel = document.createElement("LABEL");
+	var text = document.createTextNode(taskText);
+	taskLabel.appendChild(text);
+	taskLabel.className = "task-label";
+	return taskLabel;
 }
 
 // Returns a new "remove" button.
