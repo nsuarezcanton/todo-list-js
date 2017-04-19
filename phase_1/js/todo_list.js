@@ -1,3 +1,4 @@
+// Sets up the input field so tasks can be added when pressing "Enter".
 function setUpInputField() {
 	var inputField = document.getElementById("task_input_field");
 	inputField.addEventListener("keydown", function(e) {
@@ -23,6 +24,13 @@ function newElement() {
 
 	document.getElementById("task_input_field").value = "";
 
+	var doneInput = newCheckbox()
+	li.appendChild(doneInput);
+
+	doneInput.addEventListener("change", function(e) {
+		this.parentElement.classList.toggle("checked");
+	});
+
 	var taskLabel = newTaskLabel(inputValue);
 	li.appendChild(taskLabel);
 
@@ -47,16 +55,9 @@ function newElement() {
 		var list = document.getElementById("task_list");
 		list.removeChild(this.parentElement);
 	};
-
-	var doneInput = newCheckbox()
-	li.insertBefore(doneInput, li.childNodes[0]);
-
-	doneInput.addEventListener("change", function(e) {
-		this.parentElement.classList.toggle("checked");
-	});
 }
 
-// Returns a new task label.
+// Returns a new task label. Takes the input text as argument.
 function newTaskLabel(taskText) {
 	var taskLabel = document.createElement("LABEL");
 	var text = document.createTextNode(taskText);

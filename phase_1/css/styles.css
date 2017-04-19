@@ -14,7 +14,12 @@ button:focus {
 }
 
 [contenteditable="true"]:focus {
-    outline: none;
+	outline: none;
+}
+label[contenteditable=true] {
+	background-color: #E8E8EE;
+	padding: 0.1rem 0.2rem;
+	border: 1px solid #DCDCDC;
 }
 
 #todo_list_container {
