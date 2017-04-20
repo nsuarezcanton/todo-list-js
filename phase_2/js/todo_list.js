@@ -1,5 +1,4 @@
 $( document ).ready(function () {
-	console.log("Document is ready.");
 	setUpInputField();
 });
 
@@ -15,80 +14,76 @@ function setUpInputField() {
 
 // Create a new list item when clicking on the "ADD" button
 function newElement() {
-	var li = document.createElement("LI");
-	var inputValue = document.getElementById("task_input_field").value;
+	var inputValue = $("#task_input_field").val();
 
 	if (inputValue === "") {
 		alert("New task cannot be empty.");
 	} else {
-		document.getElementById("task_list").appendChild(li);
-	}
+		$("#task_input_field").val("");
 
-	document.getElementById("task_input_field").value = "";
+		var li = $(document.createElement("LI"));
+		$("#task_list").append(li);
 
-	var doneInput = newCheckbox()
-	li.appendChild(doneInput);
+		var doneInput = newCheckbox()
+		li.append(doneInput);
 
-	doneInput.addEventListener("change", function(e) {
-		this.parentElement.classList.toggle("checked");
-	});
+		var taskLabel = newTaskLabel(inputValue);
+		li.append(taskLabel);
 
-	var taskLabel = newTaskLabel(inputValue);
-	li.appendChild(taskLabel);
+		var editSpan = newEditButton()
+		li.append(editSpan);
 
-	var editSpan = newEditButton()
-	li.appendChild(editSpan);
+		var removeSpan = newRemoveButton()
+		li.append(removeSpan);
 
-	editSpan.onclick = function(e) {
-		taskLabel.contentEditable = true;
-	};
-
-	li.addEventListener("keydown", function(e) {
-		if(e.key == "Enter"){
-			event.preventDefault();
-			taskLabel.contentEditable = false;
-		}
-	});
-
-	var removeSpan = newRemoveButton()
-	li.appendChild(removeSpan);
-
-	removeSpan.onclick = function(e) {
-		var list = document.getElementById("task_list");
-		list.removeChild(this.parentElement);
+		li.keypress(function(event) {
+			console.log(event.which);
+			if(event.which == 13){
+				taskLabel.attr('contenteditable','false');
+				return false;
+			}
+		});
 	};
 }
 
 // Returns a new task label. Takes the input text as argument.
 function newTaskLabel(taskText) {
-	var taskLabel = document.createElement("LABEL");
-	var text = document.createTextNode(taskText);
-	taskLabel.appendChild(text);
-	taskLabel.className = "task-label";
+	var taskLabel = $(document.createElement("LABEL"));
+	var text = $(document.createTextNode(taskText));
+	taskLabel.append(text);
 	return taskLabel;
 }
 
 // Returns a new "remove" button.
 function newRemoveButton() {
-	var removeSpan = document.createElement("DIV");
-	var removeTxt = document.createTextNode("\u00D7");
-	removeSpan.className = "remove_button";
-	removeSpan.appendChild(removeTxt);
+	var removeSpan = $(document.createElement("DIV"));
+	var removeTxt = $(document.createTextNode("\u00D7"));
+	removeSpan.append(removeTxt);
+	removeSpan.addClass("remove_button");
+	removeSpan.bind("click", function() {
+		removeSpan.parent().remove();
+	});
 	return removeSpan;
 }
 
 // Returns a new "checkbox" input element.
 function newCheckbox() {
-	var checkbox = document.createElement("INPUT")
-	checkbox.setAttribute("type", "checkbox")
+	var checkbox = $(document.createElement("INPUT"));
+	checkbox.attr("type", "checkbox")
+	checkbox.bind("change", function() {
+		checkbox.parent().toggleClass("checked");
+	});
 	return checkbox;
 }
 
 // Returns a new "Edit" button.
 function newEditButton() {
-	var editSpan = document.createElement("DIV");
-	var editText = document.createTextNode("\u270E");
-	editSpan.className = "edit_button";
-	editSpan.appendChild(editText);
+	var editSpan = $(document.createElement("DIV"));
+	var editText = $(document.createTextNode("\u270E"));
+	editSpan.append(editText);
+	editSpan.addClass("edit_button");
+	editSpan.bind("click", function() {
+		editSpan.siblings("label").attr('contenteditable','true');
+	});
 	return editSpan;
 }
