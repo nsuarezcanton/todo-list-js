@@ -1,15 +1,17 @@
+$( document ).ready(function () {
+	console.log("Document is ready.");
+	setUpInputField();
+});
+
 // Sets up the input field so tasks can be added when pressing "Enter".
 function setUpInputField() {
-	var inputField = document.getElementById("task_input_field");
-	inputField.addEventListener("keydown", function(e) {
-		if(e.key == "Enter"){
-			e.preventDefault();
-			document.getElementById("add_task_button").click();
+	$("#task_input_field").keypress(function(event) {
+		if (event.which == 13) {
+			$("#add_task_button").click();
+			return false;
 		}
 	});
 }
-
-setUpInputField();
 
 // Create a new list item when clicking on the "ADD" button
 function newElement() {
