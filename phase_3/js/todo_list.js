@@ -112,7 +112,7 @@ function newEditButton() {
 	return editSpan;
 }
 
-//
+// Shows and hides the "Clear Complete Tasks" button.
 function toggleRemoveCheked() {
 	var removeSelectedButton = $("#remove_button_container");
 	removeSelectedButton.fadeToggle();
