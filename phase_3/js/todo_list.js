@@ -1,6 +1,5 @@
 $( document ).ready(function () {
 	setUpInputField();
-	// $("#remove_selected_button").toggle();
 });
 
 // Sets up the input field so tasks can be added when pressing "Enter".
@@ -44,11 +43,9 @@ function newElement() {
 			}
 		});
 
-		var isTaskListEmpty
-
 		// Only show remove button after 1 task has been added to the list.
 		if ($("#task_list li").length == 1) {
-			$("#remove_selected_button").toggle();
+			toggleRemoveCheked();
 		}
 	};
 }
@@ -61,8 +58,10 @@ function removeSelected() {
 		if (taskItem.hasClass("checked")) {
 			taskItem.remove()
 		}
+
+		// Hide "Clear Completed Tasks" if there are no tasks on the list.
 		if ($("#task_list li").length == 0) {
-			$("#remove_selected_button").toggle();
+			toggleRemoveCheked();
 		}
 	})
 }
@@ -84,7 +83,7 @@ function newRemoveButton() {
 	removeSpan.bind("click", function() {
 		removeSpan.parent().remove();
 		if ($("#task_list li").length == 0) {
-			$("#remove_selected_button").toggle();
+			toggleRemoveCheked();
 		}
 	});
 	return removeSpan;
@@ -110,6 +109,14 @@ function newEditButton() {
 		editSpan.siblings("label").attr('contenteditable','true');
 	});
 	return editSpan;
+}
+
+//
+function toggleRemoveCheked() {
+	var removeSelectedButton = $("#remove_selected_button");
+	removeSelectedButton.fadeToggle(function() {
+		removeSelectedButton.toggleClass("hidden_button visible_button");
+	});
 }
 
 

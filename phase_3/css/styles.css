@@ -47,9 +47,29 @@ label[contenteditable=true] {
 	border-width: 1px;
 }
 
-#remove_selected_button { 
+#remove_selected_button {
+	display: none;
+	margin: 1.5em auto;
+	border-radius: 5px;
+	cursor: pointer;
+	line-height: 2em;
+	border: none;
+	background-color: #6B5CA5;
+	color: #ffffff;
+}
+
+#remove_selected_button:hover { 
+	background-color: #8579B5;
+}
+
+.hidden_button {
 	display: none;
 }
+
+.visible_button { 
+	display: block;
+}
+
 
 #add_task_button {
 	display: table-cell;
