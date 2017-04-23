@@ -37,7 +37,6 @@ function newElement() {
 		li.append(removeSpan);
 
 		li.keypress(function(event) {
-			console.log(event.which);
 			if(event.which == 13){
 				taskLabel.attr('contenteditable','false');
 				return false;

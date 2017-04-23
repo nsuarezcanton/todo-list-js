@@ -1,5 +1,6 @@
 $( document ).ready(function () {
 	setUpInputField();
+	// $("#remove_selected_button").toggle();
 });
 
 // Sets up the input field so tasks can be added when pressing "Enter".
@@ -37,13 +38,25 @@ function newElement() {
 		li.append(removeSpan);
 
 		li.keypress(function(event) {
-			console.log(event.which);
 			if(event.which == 13){
 				taskLabel.attr('contenteditable','false');
 				return false;
 			}
 		});
+
+		var isTaskListEmpty
+
+		// Only show remove button after 1 task has been added to the list.
+		if ($("#task_list li").length == 1) {
+			$("#remove_selected_button").toggle();
+		}
 	};
+}
+
+
+// Removes selected tasks from to-do list.
+function removeSelected() {
+	console.log("Here!");
 }
 
 // Returns a new task label. Takes the input text as argument.
@@ -87,3 +100,7 @@ function newEditButton() {
 	});
 	return editSpan;
 }
+
+
+
+
