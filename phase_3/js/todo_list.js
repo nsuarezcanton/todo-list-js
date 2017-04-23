@@ -56,7 +56,15 @@ function newElement() {
 
 // Removes selected tasks from to-do list.
 function removeSelected() {
-	console.log("Here!");
+	$("#task_list li").each(function(index, element) {
+		var taskItem = $(element);
+		if (taskItem.hasClass("checked")) {
+			taskItem.remove()
+		}
+		if ($("#task_list li").length == 0) {
+			$("#remove_selected_button").toggle();
+		}
+	})
 }
 
 // Returns a new task label. Takes the input text as argument.
@@ -75,6 +83,9 @@ function newRemoveButton() {
 	removeSpan.addClass("remove_button");
 	removeSpan.bind("click", function() {
 		removeSpan.parent().remove();
+		if ($("#task_list li").length == 0) {
+			$("#remove_selected_button").toggle();
+		}
 	});
 	return removeSpan;
 }
