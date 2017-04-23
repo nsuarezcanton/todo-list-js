@@ -47,19 +47,18 @@ label[contenteditable=true] {
 	border-width: 1px;
 }
 
-#remove_selected_button {
+#remove_button_container {
 	display: none;
-	margin: 1.5em auto;
-	border-radius: 5px;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 1em;
 	cursor: pointer;
-	line-height: 2em;
-	border: none;
-	background-color: #6B5CA5;
+	background-color: #414288;
 	color: #ffffff;
 }
 
-#remove_selected_button:hover { 
-	background-color: #8579B5;
+#remove_button_container:hover { 
+	background-color: #63649D;
 }
 
 .hidden_button {

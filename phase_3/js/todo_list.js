@@ -56,12 +56,13 @@ function removeSelected() {
 	$("#task_list li").each(function(index, element) {
 		var taskItem = $(element);
 		if (taskItem.hasClass("checked")) {
-			taskItem.remove()
-		}
-
-		// Hide "Clear Completed Tasks" if there are no tasks on the list.
-		if ($("#task_list li").length == 0) {
-			toggleRemoveCheked();
+			taskItem.fadeOut(function() { 
+				$(this).remove();
+				// Hide "Clear Completed Tasks" if there are no tasks on the list.
+				if ($("#task_list li").length == 0) {
+					toggleRemoveCheked();
+				}
+			});
 		}
 	})
 }
@@ -113,12 +114,6 @@ function newEditButton() {
 
 //
 function toggleRemoveCheked() {
-	var removeSelectedButton = $("#remove_selected_button");
-	removeSelectedButton.fadeToggle(function() {
-		removeSelectedButton.toggleClass("hidden_button visible_button");
-	});
+	var removeSelectedButton = $("#remove_button_container");
+	removeSelectedButton.fadeToggle();
 }
-
-
-
-
