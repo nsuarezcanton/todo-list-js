@@ -82,10 +82,13 @@ function newRemoveButton() {
 	removeSpan.append(removeTxt);
 	removeSpan.addClass("remove_button");
 	removeSpan.bind("click", function() {
-		removeSpan.parent().remove();
-		if ($("#task_list li").length == 0) {
-			toggleRemoveCheked();
-		}
+		removeSpan.parent().fadeOut(function() {
+			$(this).remove();
+			// Hide "Clear Completed Tasks" if there are no tasks on the list.
+			if ($("#task_list li").length == 0) {
+				toggleRemoveCheked();
+			}
+		})
 	});
 	return removeSpan;
 }
