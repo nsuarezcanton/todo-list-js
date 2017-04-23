@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 
 /* Include the padding and border in an element's total width and height */
 * {
@@ -55,6 +55,7 @@ label[contenteditable=true] {
 	cursor: pointer;
 	background-color: #414288;
 	color: #ffffff;
+	font-weight: 300;
 }
 
 #remove_button_container:hover { 
