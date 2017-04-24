@@ -1,5 +1,5 @@
 ## todo-list-js
-“To-Do List” is a simple JavaScript app that allows users to maintain a list of tasks. The user should also be able to edit, delete or mark tasks as complete. The development of this app will take place in two phases, Phase I & Phase II. Phase III is optional.
+“To-Do List” is a simple JavaScript app that allows users to maintain a list of tasks. The user should also be able to edit, delete or mark tasks as complete. The development of this app will take place in two phases, Phase I & Phase II. Phase III is optional. Check out a demo [here](https://nsuarezcanton-todo.herokuapp.com/index.html).
 ### Requirements
 * When the user enters a task in the "To-do" text-box and clicks the ADD button, it will get added to the list. **[X]**
 * If they type a task and hit the enter key, it will also get added to the list. **[X]**
